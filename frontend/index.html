@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="SmartDesk AI - Generative AI Powered IT Service Management Platform">
+
+    <title>SmartDesk AI | IT Service Management</title>
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+
+                <div>
+                    <h2>SmartDesk<span> AI</span></h2>
+                    <p>IT SERVICE PLATFORM</p>
+                </div>
+
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <p class="menu-heading">WORKSPACE</p>
+
+                <a href="#overview" class="nav-item active">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Overview</span>
+                </a>
+
+                <a href="#report-issue" class="nav-item">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <span>Report an Issue</span>
+                </a>
+
+                <a href="#incidents" class="nav-item">
+                    <i class="fa-solid fa-ticket"></i>
+                    <span>Incidents</span>
+                </a>
+
+                <p class="menu-heading">AI SERVICES</p>
+
+                <a href="#ai-assistant" class="nav-item">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>AI Assistant</span>
+                </a>
+
+                <a href="#knowledge-base" class="nav-item">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Knowledge Base</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-help" id="sidebarHelpButton">
+                <i class="fa-solid fa-circle-question"></i>
+
+                    <div>
+                        <h4>Need Help?</h4>
+                        <p>SmartDesk AI Support</p>
+                    </div>
+                </div>
+
+                <!-- HELP PANEL -->
+                <div class="help-panel" id="helpPanel">
+
+                    <div class="help-panel-header">
+                        <h3>SmartDesk Support</h3>
+                        <button type="button" id="closeHelpPanel">
+                            &times;
+                        </button>
+                    </div>
+
+                    <p>How can we help you today?</p>
+
+                    <a href="#report-issue">
+                        <i class="fa-solid fa-ticket"></i>
+                        Report an Issue
+                    </a>
+
+                    <a href="#ai-assistant">
+                        <i class="fa-solid fa-robot"></i>
+                        AI Assistant
+                    </a>
+
+                    <a href="#knowledge-base">
+                        <i class="fa-solid fa-book-open"></i>
+                        Knowledge Base
+                    </a>
+
+                </div>
+
+                <div class="sidebar-version">
+                <span>Version 1.0</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <main class="main-content">
+
+
+            <!-- TOP NAVIGATION -->
+
+            <header class="topbar">
+
+                <div>
+                    <p class="breadcrumb">Workspace / Dashboard</p>
+                    <h2>IT Service Dashboard</h2>
+                </div>
+
+                <div class="topbar-right">
+
+                    <div class="system-status">
+                        <span class="status-dot"></span>
+                        System Active
+                    </div>
+
+                    <div class="profile">
+
+                        <div class="profile-avatar">SD</div>
+
+                        <div>
+                            <h4>IT Administrator</h4>
+                            <p>Administrator</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================================
+                 DASHBOARD OVERVIEW
+            ========================================== -->
+
+            <section class="welcome-section" id="overview">
+
+                <div class="welcome-content">
+
+                    <span class="welcome-tag">
+                        <i class="fa-solid fa-sparkles"></i>
+                        AI-POWERED IT SUPPORT
+                    </span>
+
+                    <h1>Welcome to SmartDesk AI</h1>
+
+                    <p>
+                        Manage IT incidents, discover solutions and simplify
+                        IT support operations with Generative AI.
+                    </p>
+
+                    <a href="#report-issue" class="primary-link">
+                        <i class="fa-solid fa-plus"></i>
+                        Create New Incident
+                    </a>
+
+                </div>
+
+                <div class="welcome-illustration">
+
+                    <i class="fa-solid fa-headset"></i>
+
+                    <div class="illustration-badge">
+                        <i class="fa-solid fa-robot"></i>
+                        AI Assistant
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 INCIDENT STATISTICS
+            ========================================== -->
+
+            <section class="statistics-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Incident & AI Analytics</h2>
+                        <p>Monitor IT support activities and AI performance.</p>
+                    </div>
+
+                </div>
+
+                <div class="statistics">
+
+                    <!-- TOTAL INCIDENTS -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon total-icon">
+                            <i class="fa-solid fa-ticket"></i>
+                        </div>
+
+                        <div>
+                            <h3>Total Incidents</h3>
+                            <p id="totalIncidents">0</p>
+                            <span>All reported incidents</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- OPEN INCIDENTS -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon open-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+
+                        <div>
+                            <h3>Open Incidents</h3>
+                            <p id="openIncidents">0</p>
+                            <span>Awaiting resolution</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- RESOLVED INCIDENTS -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon resolved-icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                        <div>
+                            <h3>Resolved Incidents</h3>
+                            <p id="resolvedIncidents">0</p>
+                            <span>Successfully resolved</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- GEMINI AI ANALYSES -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+
+                        <div>
+                            <h3>Gemini AI Analyses</h3>
+                            <p id="geminiAnalyses">0</p>
+                            <span>Analysed using Gemini AI</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- FALLBACK ANALYSES -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+
+                        <div>
+                            <h3>Fallback Analyses</h3>
+                            <p id="fallbackAnalyses">0</p>
+                            <span>Analysed using local engine</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- PENDING / FAILED -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-hourglass-half"></i>
+                        </div>
+
+                        <div>
+                            <h3>Pending / Failed</h3>
+                            <p id="pendingFailedAnalyses">0</p>
+                            <span>Awaiting or failed analysis</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 ANALYTICS DASHBOARD
+            ========================================== -->
+
+            <section class="analytics-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Performance Dashboard</h2>
+                        <p>Get insights into incidents, priorities and AI operations.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="analytics-grid">
+
+
+                    <!-- AI PERFORMANCE ANALYTICS -->
+
+                    <section class="content-card analytics-card" id="ai-performance">
+
+                        <div class="card-heading">
+
+                            <div class="heading-icon ai-icon">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+
+                            <div>
+                                <h2>AI Performance & Reliability</h2>
+                                <p>Monitor AI analysis performance and reliability.</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>Gemini AI Usage</h3>
+                                <span id="geminiPercentage">0%</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill gemini-fill"
+                                    id="geminiProgress"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>Local Fallback Usage</h3>
+                                <span id="fallbackPercentage">0%</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill fallback-fill"
+                                    id="fallbackProgress"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>Analysis Completion Rate</h3>
+                                <span id="completionPercentage">0%</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill completion-fill"
+                                    id="completionProgress"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>Analysis Failure Rate</h3>
+                                <span id="failurePercentage">0%</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill failure-fill"
+                                    id="failureProgress"></div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- INCIDENT PRIORITY ANALYTICS -->
+
+                    <section class="content-card analytics-card" id="priority-analytics">
+
+                        <div class="card-heading">
+
+                            <div class="heading-icon">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+
+                            <div>
+                                <h2>Incident Priority Analytics</h2>
+                                <p>Monitor incidents based on their urgency.</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>🔴 Critical Priority</h3>
+                                <span id="criticalCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="criticalProgress"
+                                    style="background:#dc2626;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>🟠 High Priority</h3>
+                                <span id="highCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="highProgress"
+                                    style="background:#f97316;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>🟡 Medium Priority</h3>
+                                <span id="mediumCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="mediumProgress"
+                                    style="background:#eab308;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>🟢 Low Priority</h3>
+                                <span id="lowCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="lowProgress"
+                                    style="background:#16a34a;"></div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- INCIDENT CATEGORY ANALYTICS -->
+
+                    <section class="content-card analytics-card" id="category-analytics">
+
+                        <div class="card-heading">
+
+                            <div class="heading-icon">
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+
+                            <div>
+                                <h2>Incident Category Analytics</h2>
+                                <p>Monitor incidents based on their categories.</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>🌐 Network</h3>
+                                <span id="networkCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="networkProgress"
+                                    style="background:#2563eb;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>💻 Hardware</h3>
+                                <span id="hardwareCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="hardwareProgress"
+                                    style="background:#9333ea;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>📦 Software</h3>
+                                <span id="softwareCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="softwareProgress"
+                                    style="background:#0891b2;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>🔐 Security</h3>
+                                <span id="securityCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="securityProgress"
+                                    style="background:#dc2626;"></div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- INCIDENT STATUS ANALYTICS -->
+
+                    <section class="content-card analytics-card" id="status-analytics">
+
+                        <div class="card-heading">
+
+                            <div class="heading-icon">
+                                <i class="fa-solid fa-list-check"></i>
+                            </div>
+
+                            <div>
+                                <h2>Incident Status Analytics</h2>
+                                <p>Track incidents based on their current status.</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>🔵 Open</h3>
+                                <span id="statusOpenCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="statusOpenProgress"
+                                    style="background:#2563eb;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>🟠 In Progress</h3>
+                                <span id="statusProgressCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="statusProgressBar"
+                                    style="background:#f97316;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>🟢 Resolved</h3>
+                                <span id="statusResolvedCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="statusResolvedProgress"
+                                    style="background:#16a34a;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-header">
+                                <h3>⚫ Closed</h3>
+                                <span id="statusClosedCount">0</span>
+                            </div>
+
+                            <div class="performance-track">
+                                <div class="performance-fill"
+                                    id="statusClosedProgress"
+                                    style="background:#64748b;"></div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 INCIDENT REPORT FORM
+            ========================================== -->
+
+            <section class="content-card" id="report-issue">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon">
+                        <i class="fa-solid fa-file-circle-plus"></i>
+                    </div>
+
+                    <div>
+                        <h2>Report an IT Issue</h2>
+                        <p>Submit your technical problem for AI-powered analysis.</p>
+                    </div>
+
+                </div>
+
+
+                <form id="incidentForm">
+
+                    <div class="form-group">
+
+                        <label for="employeeName">
+                            Employee Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="employeeName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="issue">
+                            Describe Your IT Problem
+                        </label>
+
+                        <textarea
+                            id="issue"
+                            rows="5"
+                            placeholder="Describe your problem in detail. Example: My laptop is not connecting to company Wi-Fi."
+                            required
+                        ></textarea>
+
+                        <small>
+                            Provide sufficient details for accurate AI analysis.
+                        </small>
+
+                    </div>
+
+
+                    <button type="submit" class="submit-button">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Submit Incident
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- =========================================
+                 AI ASSISTANT RESULT
+            ========================================== -->
+
+            <section class="content-card ai-result-card" id="ai-assistant">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon ai-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+
+                    <div>
+                        <h2>AI Assistant Response</h2>
+                        <p>Intelligent incident analysis and recommendations.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="result" id="result">
+
+                    <div class="empty-state">
+
+                        <i class="fa-solid fa-robot"></i>
+
+                        <h3>Your AI analysis will appear here</h3>
+
+                        <p>
+                            Submit an incident to receive intelligent recommendations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 INCIDENT MANAGEMENT
+            ========================================== -->
+
+            <section class="content-card dashboard-card" id="incidents">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+
+                    <div>
+                        <h2>Incident Management</h2>
+                        <p>Track, search and manage reported IT incidents.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="incident-toolbar">
+
+                    <input
+                        type="text"
+                        id="incidentSearch"
+                        placeholder="Search employee or issue..."
+                    >
+
+                    <select id="statusFilter">
+
+                        <option value="All">All Statuses</option>
+                        <option value="Open">Open</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                        <option value="Closed">Closed</option>
+
+                    </select>
+
+                    <button type="button" id="refreshIncidents" class="refresh-button">
+                        <i class="fa-solid fa-rotate"></i>
+                        Refresh
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Incident ID</th>
+                                <th>Employee</th>
+                                <th>Issue</th>
+                                <th>Category</th>
+                                <th>Priority</th>
+                                <th>AI Analysis</th>
+                                <th>Status</th>
+                                <th>Analysis Source</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="incidentList">
+
+                            <tr>
+                                <td colspan="9">Loading incidents...</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 KNOWLEDGE BASE
+            ========================================== -->
+
+            <section class="content-card knowledge-card" id="knowledge-base">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon knowledge-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+
+                    <div>
+                        <h2>AI Knowledge Base Assistant</h2>
+                        <p>Find useful solutions for common technical problems.</p>
+                    </div>
+
+                </div>
+
+
+                <textarea
+                    id="knowledgeIssue"
+                    rows="3"
+                    placeholder="Example: My laptop is running slowly. How can I fix it?"
+                ></textarea>
+
+
+                <button type="button" id="searchKnowledge" class="knowledge-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Search Solutions
+                </button>
+
+
+                <div id="knowledgeResult"></div>
+
+            </section>
+
+
+            <!-- =========================================
+                 FOOTER
+            ========================================== -->
+
+            <footer class="main-footer">
+
+                <p>
+                    © 2026 SmartDesk AI. Intelligent IT Service Management.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1433 @@
+/* =========================================
+   1. GLOBAL STYLES
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --navy: #172554;
+    --sidebar: #111c3b;
+    --background: #f5f7fc;
+    --white: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --success: #059669;
+    --danger: #dc2626;
+    --warning: #ea580c;
+    --shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    --shadow-hover: 0 10px 28px rgba(15, 23, 42, 0.09);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 25px;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+::selection {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+
+/* =========================================
+   2. MAIN APPLICATION LAYOUT
+========================================= */
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   3. SIDEBAR
+========================================= */
+
+.sidebar {
+    width: 255px;
+    min-width: 255px;
+    background: var(--sidebar);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 18px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.brand-icon {
+    width: 43px;
+    height: 43px;
+    border-radius: 12px;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.brand h2 {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+}
+
+.brand h2 span {
+    color: #60a5fa;
+}
+
+.brand p {
+    font-size: 9px;
+    letter-spacing: 1.3px;
+    color: #94a3b8;
+    margin-top: 5px;
+}
+
+.sidebar-menu {
+    padding-top: 30px;
+}
+
+.menu-heading {
+    color: #8492b0;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    padding: 0 12px;
+    margin-bottom: 12px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px 14px;
+    margin-bottom: 7px;
+    border-radius: 8px;
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.nav-item i {
+    width: 19px;
+    font-size: 16px;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background: #263b70;
+    color: white;
+}
+
+.nav-item.active {
+    border-left: 3px solid #60a5fa;
+}
+
+.sidebar-menu .menu-heading:not(:first-child) {
+    margin-top: 35px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: 25px;
+}
+
+.sidebar-help {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    background: rgba(255,255,255,0.07);
+    padding: 15px 12px;
+    border-radius: 10px;
+}
+
+.sidebar-help > i {
+    font-size: 21px;
+    color: #60a5fa;
+}
+
+.sidebar-help h4 {
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.sidebar-help p {
+    font-size: 10px;
+    color: #a5b4fc;
+}
+
+.sidebar-version {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 22px 8px 0;
+    color: #8492b0;
+    font-size: 10px;
+}
+
+
+/* =========================================
+   4. MAIN CONTENT
+========================================= */
+
+.main-content {
+    width: calc(100% - 255px);
+    margin-left: 255px;
+    padding: 0 38px;
+    min-height: 100vh;
+    min-width: 0;
+}
+
+
+/* =========================================
+   5. TOP NAVIGATION
+========================================= */
+
+.topbar {
+    min-height: 95px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+    padding: 15px 0;
+}
+
+.breadcrumb {
+    color: var(--muted);
+    font-size: 11px;
+    margin-bottom: 7px;
+}
+
+.topbar h2 {
+    font-size: 21px;
+    color: var(--navy);
+    font-weight: 700;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ecfdf5;
+    color: #047857;
+    padding: 9px 13px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    background: #dbeafe;
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.profile h4 {
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.profile p {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+
+/* =========================================
+   6. WELCOME SECTION
+========================================= */
+
+.welcome-section {
+    background: linear-gradient(115deg, #172554, #1e40af, #2563eb);
+    color: white;
+    border-radius: 15px;
+    padding: 35px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 215px;
+    margin-bottom: 35px;
+    overflow: hidden;
+    position: relative;
+}
+
+.welcome-tag {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    color: #bfdbfe;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.welcome-content h1 {
+    font-size: 27px;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.welcome-content > p {
+    color: #dbeafe;
+    font-size: 13px;
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 23px;
+}
+
+.primary-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: white;
+    color: var(--primary-dark);
+    padding: 12px 17px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.primary-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.welcome-illustration {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+    position: relative;
+    margin-right: 35px;
+    flex-shrink: 0;
+}
+
+.illustration-badge {
+    position: absolute;
+    bottom: 0;
+    right: -35px;
+    background: white;
+    color: var(--primary);
+    font-size: 10px;
+    padding: 10px 13px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   7. SECTION HEADINGS
+========================================= */
+
+.section-heading {
+    margin-bottom: 18px;
+}
+
+.section-heading h2 {
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: 6px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* =========================================
+   8. STATISTICS SECTION
+========================================= */
+
+.statistics-section {
+    margin-bottom: 35px;
+}
+
+.statistics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.stat-card {
+    background: white;
+    padding: 23px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s ease;
+    min-width: 0;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.total-icon {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.open-icon {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+.resolved-icon {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.stat-card h3 {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.stat-card p {
+    font-size: 26px;
+    color: var(--navy);
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.stat-card span {
+    color: #94a3b8;
+    font-size: 10px;
+}
+
+
+/* =========================================
+   9. CONTENT CARDS
+========================================= */
+
+.content-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 27px;
+    margin-bottom: 27px;
+    box-shadow: var(--shadow);
+    min-width: 0;
+}
+
+.card-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 25px;
+}
+
+.heading-icon {
+    width: 43px;
+    height: 43px;
+    background: #eff6ff;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.card-heading h2 {
+    font-size: 16px;
+    color: var(--navy);
+    margin-bottom: 6px;
+}
+
+.card-heading p {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.ai-icon {
+    background: #f3e8ff;
+    color: #9333ea;
+}
+
+.knowledge-icon {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+
+/* =========================================
+   10. ANALYTICS DASHBOARD
+========================================= */
+
+.analytics-section {
+    margin-top: 30px;
+    margin-bottom: 32px;
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+.analytics-card {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    margin-bottom: 0;
+}
+
+.analytics-card .card-heading {
+    margin-bottom: 25px;
+}
+
+.analytics-card .card-heading h2 {
+    font-size: 16px;
+}
+
+.analytics-card .card-heading p {
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   11. AI PERFORMANCE ANALYTICS
+========================================= */
+
+.performance-item {
+    margin-top: 25px;
+}
+
+.performance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.performance-header h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.performance-header span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.performance-track {
+    width: 100%;
+    height: 11px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.performance-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.6s ease;
+}
+
+.gemini-fill {
+    background: #16a34a;
+}
+
+.fallback-fill {
+    background: #f97316;
+}
+
+.completion-fill {
+    background: #2563eb;
+}
+
+.failure-fill {
+    background: #dc2626;
+}
+
+#ai-performance {
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   12. FORM STYLES
+========================================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 9px;
+    color: #334155;
+}
+
+.form-group input,
+.form-group textarea,
+#knowledgeIssue {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--text);
+    background: #fbfcfe;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+#knowledgeIssue:focus {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.09);
+}
+
+.form-group textarea,
+#knowledgeIssue {
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.form-group small {
+    display: block;
+    color: #94a3b8;
+    font-size: 10px;
+    margin-top: 7px;
+}
+
+.submit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.submit-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   13. AI RESPONSE
+========================================= */
+
+.result {
+    background: #f8faff;
+    border: 1px solid #e2e8f0;
+    padding: 23px;
+    border-radius: 10px;
+    min-height: 130px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.result h2,
+.result h3 {
+    color: var(--navy);
+    margin-bottom: 12px;
+}
+
+.result h2 {
+    font-size: 17px;
+}
+
+.result h3 {
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.result p {
+    font-size: 12px;
+    margin-bottom: 9px;
+}
+
+.result ul,
+.result ol {
+    padding-left: 22px;
+    font-size: 12px;
+}
+
+.result li {
+    margin-bottom: 8px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 15px;
+}
+
+.empty-state > i {
+    font-size: 35px;
+    color: #93c5fd;
+    margin-bottom: 14px;
+}
+
+.empty-state h3 {
+    font-size: 14px;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    color: var(--muted);
+}
+
+
+/* =========================================
+   14. INCIDENT MANAGEMENT
+========================================= */
+
+.incident-toolbar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.incident-toolbar input {
+    flex: 1;
+    min-width: 180px;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-size: 11px;
+    outline: none;
+}
+
+.incident-toolbar input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+}
+
+.incident-toolbar select {
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: white;
+    color: var(--text);
+    font-size: 11px;
+    outline: none;
+}
+
+.refresh-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #eff6ff;
+    color: var(--primary);
+    padding: 11px 15px;
+    border: none;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.refresh-button:hover {
+    background: #dbeafe;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+}
+
+table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f8fafc;
+}
+
+th {
+    text-align: left;
+    padding: 15px 13px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+}
+
+td {
+    padding: 15px 13px;
+    border-top: 1px solid #edf0f5;
+    font-size: 11px;
+    color: #475569;
+    vertical-align: middle;
+    overflow-wrap: anywhere;
+}
+
+tbody tr {
+    transition: background 0.2s;
+}
+
+tbody tr:hover {
+    background: #f8faff;
+}
+
+td select {
+    padding: 7px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 10px;
+    background: white;
+    max-width: 120px;
+}
+
+td button {
+    padding: 8px 11px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+td button:hover {
+    background: var(--primary-dark);
+}
+
+td button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   15. KNOWLEDGE BASE
+========================================= */
+
+.knowledge-card textarea {
+    margin-bottom: 15px;
+}
+
+.knowledge-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: #059669;
+    color: white;
+    border: none;
+    padding: 12px 19px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.knowledge-button:hover {
+    background: #047857;
+}
+
+#knowledgeResult {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 9px;
+    background: #f0fdf4;
+    border: 1px solid #dcfce7;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+#knowledgeResult h3 {
+    color: #166534;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#knowledgeResult p,
+#knowledgeResult li {
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+#knowledgeResult ul,
+#knowledgeResult ol {
+    padding-left: 22px;
+}
+
+
+/* =========================================
+   16. ACTIVITY HISTORY
+========================================= */
+
+#activityHistorySection,
+#historySection,
+.activity-history-section {
+    background: #ffffff;
+    border: 1px solid #e5eaf2;
+    border-radius: 13px;
+    padding: 26px;
+    margin-top: 30px;
+    margin-bottom: 27px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+#activityHistorySection h2,
+#historySection h2,
+.activity-history-section h2 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #172033;
+    margin-bottom: 8px;
+}
+
+#activityHistorySection p,
+#historySection p,
+.activity-history-section p {
+    color: #8490a3;
+    font-size: 12px;
+}
+
+#activityHistorySection input,
+#historySection input,
+.activity-history-section input,
+#activityHistorySection select,
+#historySection select,
+.activity-history-section select {
+    height: 42px;
+    padding: 0 14px;
+    border: 1px solid #dce3ed;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #334155;
+    font-size: 12px;
+    outline: none;
+    transition: 0.2s ease;
+    margin: 8px 8px 16px 0;
+}
+
+#activityHistorySection input:focus,
+#historySection input:focus,
+.activity-history-section input:focus,
+#activityHistorySection select:focus,
+#historySection select:focus,
+.activity-history-section select:focus {
+    border-color: #3978e8;
+    box-shadow: 0 0 0 3px rgba(57,120,232,0.1);
+}
+
+#activityHistorySection .table-container,
+#historySection .table-container,
+.activity-history-section .table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+#activityHistorySection table,
+#historySection table,
+.activity-history-section table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 12px;
+}
+
+#activityHistorySection thead,
+#historySection thead,
+.activity-history-section thead {
+    background: #f5f7fb;
+}
+
+#activityHistorySection th,
+#historySection th,
+.activity-history-section th {
+    padding: 15px 14px;
+    text-align: left;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    border-bottom: 1px solid #e5eaf2;
+    white-space: nowrap;
+}
+
+#activityHistorySection td,
+#historySection td,
+.activity-history-section td {
+    padding: 16px 14px;
+    color: #475569;
+    font-size: 12px;
+    border-bottom: 1px solid #edf0f5;
+    vertical-align: middle;
+}
+
+#activityHistorySection tbody tr:hover,
+#historySection tbody tr:hover,
+.activity-history-section tbody tr:hover {
+    background: #f8faff;
+}
+
+#activityHistorySection tbody tr:last-child td,
+#historySection tbody tr:last-child td,
+.activity-history-section tbody tr:last-child td {
+    border-bottom: none;
+}
+
+#activityHistorySection button,
+#historySection button,
+.activity-history-section button {
+    padding: 9px 15px;
+    border: none;
+    border-radius: 7px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#activityHistorySection button:hover,
+#historySection button:hover,
+.activity-history-section button:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+#activityHistorySection .activity-badge,
+#historySection .activity-badge,
+.activity-history-section .activity-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   17. FOOTER
+========================================= */
+
+.main-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 25px;
+    border-top: 1px solid var(--border);
+    color: #94a3b8;
+    font-size: 10px;
+    gap: 12px;
+}
+
+.main-footer span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+
+/* =========================================
+   18. TABLET RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .sidebar {
+        width: 220px;
+        min-width: 220px;
+    }
+
+    .main-content {
+        width: calc(100% - 220px);
+        margin-left: 220px;
+        padding: 0 25px;
+    }
+
+    .statistics {
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 18px 12px;
+        gap: 10px;
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .analytics-grid {
+        gap: 18px;
+    }
+}
+
+
+/* =========================================
+   19. MOBILE RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        padding: 15px;
+    }
+
+    .app-container {
+        display: block;
+    }
+
+    .brand {
+        padding-bottom: 15px;
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        padding-top: 15px;
+    }
+
+    .menu-heading {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 10px;
+        margin: 0;
+        font-size: 11px;
+    }
+
+    .sidebar-bottom {
+        display: none;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 15px;
+    }
+
+    .topbar {
+        min-height: 80px;
+    }
+
+    .topbar h2 {
+        font-size: 17px;
+    }
+
+    .system-status {
+        display: none;
+    }
+
+    .welcome-section {
+        padding: 25px;
+        min-height: 180px;
+    }
+
+    .welcome-content h1 {
+        font-size: 22px;
+    }
+
+    .welcome-illustration {
+        display: none;
+    }
+
+    .statistics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stat-card {
+        padding: 18px;
+    }
+
+    .analytics-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .content-card {
+        padding: 19px;
+    }
+
+    .incident-toolbar {
+        align-items: stretch;
+    }
+
+    .incident-toolbar input {
+        flex-basis: 100%;
+    }
+
+    .main-footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    #activityHistorySection,
+    #historySection,
+    .activity-history-section {
+        padding: 16px;
+        margin-top: 20px;
+    }
+}
+
+
+/* =========================================
+   20. SMALL MOBILE SCREENS
+========================================= */
+
+@media (max-width: 480px) {
+
+    .profile {
+        display: none;
+    }
+
+    .topbar h2 {
+        font-size: 15px;
+    }
+
+    .welcome-content h1 {
+        font-size: 19px;
+    }
+
+    .welcome-content > p {
+        font-size: 11px;
+    }
+
+    .statistics {
+        grid-template-columns: 1fr;
+    }
+
+    .card-heading h2 {
+        font-size: 14px;
+    }
+
+    .nav-item span {
+        font-size: 10px;
+    }
+
+    .submit-button,
+    .knowledge-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .content-card {
+        padding: 16px;
+    }
+
+    .analytics-card {
+        padding: 18px;
+    }
+
+    .performance-header h3 {
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================
+   21. ACCESSIBILITY AND INTERACTION
+========================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+/* HELP PANEL */
+
+.sidebar-help {
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.sidebar-help:hover {
+    transform: translateY(-2px);
+}
+
+.help-panel {
+    display: none;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.help-panel.active {
+    display: block;
+}
+
+.help-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.help-panel-header h3 {
+    font-size: 15px;
+}
+
+.help-panel-header button {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.help-panel p {
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.help-panel a {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: #334155;
+    font-size: 13px;
+    border-radius: 8px;
+}
+
+.help-panel a:hover {
+    background: #f1f5f9;
+}
